@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vishad J.</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00FF00;
+      font-family: monospace;
+      padding: 20px;
+      margin: 0;
+    }
+
+    #terminal {
+      max-width: 800px;
+      margin-left: 0;
+    }
+
+    .prompt {
+      color: #00ff00;
+    }
+
+    #cli-input {
+      background: none;
+      border: none;
+      color: #00FF00;
+      font-family: monospace;
+      font-size: 1em;
+      width: 80%;
+      outline: none;
+    }
+
+    #output {
+      white-space: pre-wrap;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal">
+    <div id="output">user@cli:~$ cat vishad.txt
+Hi, I'm Vishad Jain!
+- I am very enthusiastic and interested about technology, driven to learn about its difficulties, comprehend how systems function, and keep up with new developments. Constantly looking for ways to use and expand technical knowledge via practical training and problem-solving.
+- Skilled in Python, HTML, CSS, JavaScript
+- Currently learning Networking and ML
+- Also having major interests in DevOps, Docker, Linux
+- Always curious and improving
+<!-- - Loves building CLI-style fun interfaces like this 😄 -->
+
+Type `help` to see available commands.
+</div>
+    <div id="input-line">
+      <span class="prompt">user@cli:~$</span>
+      <input type="text" id="cli-input" autofocus />
+    </div>
+  </div>
+  <script>
+    const input = document.getElementById("cli-input");
+    const output = document.getElementById("output");
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        const command = input.value.trim();
+        output.innerHTML += `\nuser@cli:~$ ${command}\n`;
+
+        switch (command.toLowerCase()) {
+          case "cat vishad.txt":
+            output.innerHTML += "Hi, I'm Vishad Jain!\n" +
+              "I am very enthusiastic and interested about technology, driven to learn about its difficulties, comprehend how systems function, and keep up with new developments. Constantly looking for ways to use and expand technical knowledge via practical training and problem-solving.\n" +
+              "- Passionate about technology and problem-solving\n" +
+              "- Skilled in Python, HTML, CSS, JavaScript\n" +
+              "- Currently learning Networking and ML\n" +
+              "- Also having major interests in DevOps, Docker, Linux\n" +
+              "- Always curious and improving\n";
+            //   "- Loves building CLI-style fun interfaces like this 😄\n";
+            break;
+          case "help":
+            output.innerHTML += "Available commands: help, cat vishad.txt, clear\n";
+            break;
+          case "clear":
+            output.innerHTML = "";
+            break;
+          default:
+            output.innerHTML += `Command not found: ${command}\n`;
+        }
+
+        input.value = "";
+        window.scrollTo(0, document.body.scrollHeight);
+      }
+    });
+  </script>
+</body>
+</html>
