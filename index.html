@@ -36,22 +36,40 @@
       white-space: pre-wrap;
       margin-bottom: 10px;
     }
+
+    .link-button {
+      display: inline-block;
+      background-color: #00BFFF;
+      color: #000;
+      padding: 5px 10px;
+      margin-right: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .link-button:hover {
+      background-color: #1e90ff;
+    }
   </style>
 </head>
 <body>
   <div id="terminal">
-    <div id="output">user@cli:~$ cat vishad.txt
-Hi, I'm Vishad Jain!
-- I am very enthusiastic and interested about technology, driven to learn about its difficulties, comprehend how systems function, and keep up with new developments. Constantly looking for ways to use and expand technical knowledge via practical training and problem-solving.
+    <div id="output">user@vishad-jain:~$ cat vishad.txt
+Hi, I'm Vishad Jain! I am 18 years old, Pursuing Computer science at Jain University. 
+I am very enthusiastic and interested about technology, driven to learn about its difficulties, comprehend how systems function, and keep up with new developments. Constantly looking for ways to use and expand technical knowledge via practical training and problem-solving.
 - Skilled in Python, HTML, CSS
 - Currently learning Networking and ML
 - Also having major interests in DevOps, Docker, Linux
-- Always curious and improving my self for solving daily problems.
+- Always curious and improving my self for solving daily problems
+
+<a class='link-button' href='https://github.com/inf3rno26/' target='_blank'>GitHub</a><a class='link-button' href='https://www.linkedin.com/in/vishad-jain-3958aa266/' target='_blank'>LinkedIn</a>
+Email: <a class='link-button' href='mailto:me@inf3rno.xyz'>me@inf3rno.xyz</a>
 
 Type `help` to see available commands.
 </div>
     <div id="input-line">
-      <span class="prompt">user@cli:~$</span>
+      <span class="prompt">user@vishad-jain:~$</span>
       <input type="text" id="cli-input" autofocus />
     </div>
   </div>
@@ -66,17 +84,27 @@ Type `help` to see available commands.
 
         switch (command.toLowerCase()) {
           case "cat vishad.txt":
-            output.innerHTML += "Hi, I'm Vishad Jain!\n" +
+            output.innerHTML += "Hi, I'm Vishad Jain! I am 18 years old, Pursuing Computer science at Jain University. \n" +
               "I am very enthusiastic and interested about technology, driven to learn about its difficulties, comprehend how systems function, and keep up with new developments. Constantly looking for ways to use and expand technical knowledge via practical training and problem-solving.\n" +
-              "- Passionate about technology and problem-solving\n" +
               "- Skilled in Python, HTML, CSS\n" +
               "- Currently learning Networking and ML\n" +
               "- Also having major interests in DevOps, Docker, Linux\n" +
-              "- Always curious and improving my self for solving daily problems.\n";
-            //   "- Loves building CLI-style fun interfaces like this 😄\n";
+              "- Always curious and improving my self for solving daily problems\n" +
+              "\n<a class='link-button' href='https://github.com/inf3rno26/' target='_blank'>GitHub</a>" +
+              "<a class='link-button' href='https://www.linkedin.com/in/vishad-jain-3958aa266/' target='_blank'>LinkedIn</a>\n" +
+              "Email: <a class='link-button' href='mailto:me@inf3rno.xyz'>me@inf3rno.xyz</a>\n";
             break;
           case "help":
-            output.innerHTML += "Available commands: help, cat vishad.txt, clear\n";
+            output.innerHTML += "Available commands: help, cat vishad.txt, clear\n" +
+              "- social: display GitHub and LinkedIn buttons\n" +
+              "- contact: show contact email\n";
+            break;
+          case "social":
+            output.innerHTML += "<a class='link-button' href='https://github.com/inf3rno26/' target='_blank'>GitHub</a>" +
+              "<a class='link-button' href='https://www.linkedin.com/in/vishad-jain-3958aa266/' target='_blank'>LinkedIn</a>\n";
+            break;
+          case "contact":
+            output.innerHTML += "Email: <a class='link-button' href='mailto:me@inf3rno.xyz'>me@inf3rno.xyz</a>\n";
             break;
           case "clear":
             output.innerHTML = "";
